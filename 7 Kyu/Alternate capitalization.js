@@ -16,6 +16,8 @@ Even-odd disparity
 - for i in array:
     - if i.index % 2 = 0 
 
+
+    
 */
 
 function capitalize(s){
