@@ -21,13 +21,14 @@ function likes(names) {
 
     const options = {
         0: 'no one likes this',
-        1: `${names.join(', ')} likes this`,
-        2: `${names.join(', ')} like this`,
-        3: `${names.join(', ')} like this`,
-        4: `${names.slice(0, 2).join(', ')} and ${num - 2} others like this`
+        1: `${names[0]} likes this`,
+        2: `${names[0]} and ${names[1]} like this`,
+        3: `${names[0]}, ${names[1]} and ${names[2]} like this`,
+        4: `${names[0]}, ${names[1]} and ${num - 2} others like this`,
     };
     
     return options[num];
 }
+
 
 console.log(likes(names))
