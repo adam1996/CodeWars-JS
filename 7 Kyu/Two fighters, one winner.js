@@ -1,29 +1,39 @@
 /* 
-Story
-Your online store likes to give out coupons for special occasions. 
-Some customers try to cheat the system by entering invalid codes or using expired coupons.
+Create a function that returns the name of the winner in a fight between two fighters.
 
-Task
-Your mission:
-Write a function called checkCoupon which verifies that a coupon code is valid and not expired.
+Each fighter takes turns attacking the other and whoever kills the other first is victorious. Death is defined as having health <= 0.
 
-A coupon is no more valid on the day AFTER the expiration date.
- All dates will be passed as strings in this format: "MONTH DATE, YEAR".
+Each fighter will be a Fighter object/instance. See the Fighter class below in your chosen language.
 
-Examples:
-checkCoupon("123", "123", "July 9, 2015", "July 9, 2015")  ===  true
-checkCoupon("123", "123", "July 9, 2015", "July 2, 2015")  ===  false
+Both health and damagePerAttack (damage_per_attack for python) will be integers larger than 0. You can mutate the Fighter objects.
 
-- Return true if ent = corr && if curr date < expiration date
-*/
+Your function also receives a third argument, a string, with the name of the fighter that attacks first.
 
-function checkCoupon(enteredCode, correctCode, currentDate, expirationDate){
-    if(enteredCode !== correctCode){
-        return false;
-    };
-
-    let expDate = new Date(expirationDate);
-    let currDate = new Date(currentDate);
-
-    return currDate <= expDate;
+Example:
+  declare_winner(Fighter("Lew", 10, 2), Fighter("Harry", 5, 4), "Lew") => "Lew"
+  
+  Lew attacks Harry; Harry now has 3 health.
+  Harry attacks Lew; Lew now has 6 health.
+  Lew attacks Harry; Harry now has 1 health.
+  Harry attacks Lew; Lew now has 2 health.
+  Lew attacks Harry: Harry now has -1 health and is dead. Lew wins.
+function Fighter(name, health, damagePerAttack) {
+        this.name = name;
+        this.health = health;
+        this.damagePerAttack = damagePerAttack;
+        this.toString = function() { return this.name; }
 }
+*/
+function declareWinner(fighter1, fighter2, firstAttacker) {
+    while (fighter1.health > 0 && fighter2.health > 0) {
+      fighter2.health -= fighter1.damagePerAttack;
+      fighter1.health -= fighter2.damagePerAttack;
+    }
+    
+    if (fighter1.health <= 0 && fighter2.health <= 0)
+      return firstAttacker;
+    else if (fighter1.health <= 0)
+      return fighter2.name;
+    else
+      return fighter1.name;
+  }
