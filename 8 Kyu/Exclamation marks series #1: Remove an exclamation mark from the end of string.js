@@ -1,16 +1,16 @@
 /*
-Write a function that removes the spaces from the string, then return the resultant string.
+Description:
+Remove an exclamation mark from the end of a string. For a beginner kata, you can assume that the input data is always a string, no need to verify it.
 
-Examples:
-
-Input -> Output
-"8 j 8   mBliB8g  imjB8B8  jl  B" -> "8j8mBliB8gimjB8B8jlB"
-"8 8 Bi fk8h B 8 BB8B B B  B888 c hl8 BhB fd" -> "88Bifk8hB8BB8BBBB888chl8BhBfd"
-"8aaaaa dddd r     " -> "8aaaaaddddr"
-
+Examples
+remove("Hi!") == "Hi"
+remove("Hi!!!") == "Hi!!"
+remove("!Hi") == "!Hi"
+remove("!Hi!") == "!Hi"
+remove("Hi! Hi!") == "Hi! Hi"
+remove("Hi") == "Hi"
 */
 
-function noSpace(x){
-    return x.replaceAll(' ', '');
-    //replaceAll rather than using a g global flag.
-  }
+function remove (string) {
+  return string.slice(-1) === '!' ? string.slice(0 , string.length - 1) : string;
+}
