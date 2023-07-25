@@ -8,7 +8,7 @@ Examples(Operator, value1, value2) --> output
 ('+', 4, 7) --> 11
 ('-', 15, 18) --> -3
 ('*', 5, 5) --> 25
-('/', 49, 7) --> 7
+('/', 49, 7) --> 73498db
 */
 
 const basicOp = (operation, value1, value2) => eval(value1 + operation + value2);
